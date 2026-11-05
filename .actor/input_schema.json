@@ -1,0 +1,79 @@
+{
+    "title": "Wisconsin Contractor License Lookup",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "query": {
+            "title": "License number or name",
+            "type": "string",
+            "description": "A license number (e.g. \"2831 - DCFR\", \"121901224\") or part of a business or person name. Leave empty (with no Queries) to export whole license types instead.",
+            "editor": "textfield",
+            "prefill": "roofing"
+        },
+        "queries": {
+            "title": "Queries (batch)",
+            "type": "array",
+            "description": "Several license numbers or names in one run. Merged with the single query; duplicates removed.",
+            "editor": "stringList"
+        },
+        "searchBy": {
+            "title": "Search by",
+            "type": "string",
+            "description": "How to read each query. Auto: digits (optionally with a suffix like \"- DC\") = license number, anything else = organization name. Individual name accepts \"Last\", \"First Last\" or \"Last, First\".",
+            "editor": "select",
+            "enum": ["auto", "licenseNumber", "organizationName", "individualName"],
+            "enumTitles": ["Auto-detect", "License number", "Organization / DBA name", "Individual name"],
+            "default": "auto"
+        },
+        "licenseTypes": {
+            "title": "License types",
+            "type": "array",
+            "description": "Export mode (no query): which license types to download in full. Lookup mode: keep only these types. Names must match the DSPS list, e.g. \"Dwelling Contractor\", \"Dwelling Contractor Qualifier\", \"Electrical Contractor\", \"Master Electrician\", \"HVAC Contractor\", \"Master Plumber\", \"Manufactured Home Installer\". Default export: Dwelling Contractor, Dwelling Contractor Restricted, Electrical Contractor, HVAC Contractor.",
+            "editor": "stringList"
+        },
+        "constructionOnly": {
+            "title": "Construction & trades only",
+            "type": "boolean",
+            "description": "Lookup mode without license types: keep only Trades and Manufactured Homes credentials (drops nurses, CPAs, etc. that share a name or number).",
+            "default": true
+        },
+        "statusFilter": {
+            "title": "Status",
+            "type": "string",
+            "description": "Keep only this exact status, e.g. \"Active\", \"Expired\", \"Suspended\". Empty = all.",
+            "editor": "textfield"
+        },
+        "cityFilter": {
+            "title": "City",
+            "type": "string",
+            "description": "Keep only this city (exact, case-insensitive), e.g. \"Milwaukee\".",
+            "editor": "textfield"
+        },
+        "zipPrefix": {
+            "title": "ZIP prefix",
+            "type": "string",
+            "description": "Keep only ZIP codes starting with this, e.g. \"532\" for the Milwaukee area.",
+            "editor": "textfield"
+        },
+        "includeDetails": {
+            "title": "Include detail page data",
+            "type": "boolean",
+            "description": "Also fetch each record's detail page: expiration date, eligibility to practice, disciplinary orders, linked qualifiers/organizations and CE hours. One extra request per record, so runs are slower.",
+            "default": false
+        },
+        "maxResults": {
+            "title": "Max results per query / license type",
+            "type": "integer",
+            "description": "Cap applied to each query (lookup mode) or each license type (export mode). 0 = no limit.",
+            "minimum": 0,
+            "default": 100
+        },
+        "proxyConfiguration": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Optional. Not needed normally.",
+            "editor": "proxy",
+            "default": { "useApifyProxy": false }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "actorSpecification": 1,
+    "name": "wisconsin-contractor-license-lookup",
+    "title": "Wisconsin Contractor License Lookup & Export (DSPS)",
+    "description": "Verify or bulk-export Wisconsin contractor and trade credentials (Dwelling Contractor, Electrical, HVAC, Plumbing and more) from the official DSPS LicensE public lookup.",
+    "version": "0.1",
+    "buildTag": "latest",
+    "input": "./input_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "dockerfile": "./Dockerfile"
+}

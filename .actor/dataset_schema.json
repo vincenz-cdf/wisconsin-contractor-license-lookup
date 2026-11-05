@@ -1,0 +1,40 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Licenses",
+            "transformation": {
+                "fields": [
+                    "license_number",
+                    "name",
+                    "dba",
+                    "profession",
+                    "status",
+                    "city",
+                    "zip_code",
+                    "granted_date",
+                    "expiration_date",
+                    "matched_by",
+                    "detail_url"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "license_number": { "label": "License #" },
+                    "name": { "label": "Name" },
+                    "dba": { "label": "DBA" },
+                    "profession": { "label": "License type" },
+                    "status": { "label": "Status" },
+                    "city": { "label": "City" },
+                    "zip_code": { "label": "ZIP" },
+                    "granted_date": { "label": "Granted" },
+                    "expiration_date": { "label": "Expires" },
+                    "matched_by": { "label": "Matched by" },
+                    "detail_url": { "label": "Detail", "format": "link" }
+                }
+            }
+        }
+    }
+}
